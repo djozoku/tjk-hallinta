@@ -24,8 +24,10 @@
   },
   "scripts": {
     "start": "node -r tsconfig-paths/register dist/index.js",
-    "build": "tsc",
+    "build": "tsc && tsc --project tsconfig.migrations.json",
     "dev": "tsnd -r tsconfig-paths/register --respawn --no-notify --project ./tsconfig.json src/index.ts",
-    "lint": "eslint --ext js,ts,tsx ."
+    "generate:ormconfig": "node generateOrmConfig.js",
+    "lint": "eslint --ext js,ts,tsx .",
+    "migrate": "typeorm migration:run"
   }
 }

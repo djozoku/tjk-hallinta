@@ -1,8 +1,0 @@
-{
-  "name": "default",
-  "type": "postgres",
-  "url": "postgres://postgres:ozokudev@localhost:5432/tjkhallinta",
-  "entities": [
-    "dist/modules/**/*.Entity.*"
-  ]
-}

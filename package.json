@@ -33,7 +33,7 @@
     "lint:fix": "yarn workspaces run lint --fix",
     "format": "prettier --write .",
     "typecheck": "yarn workspace @tjk/api tsc --noEmit && yarn workspace @tjk/web tsc",
-    "heroku-postbuild": "yarn build:api"
+    "heroku-postbuild": "yarn build:api && yarn workspace @tjk/api generate:ormconfig && yarn workspace @tjk/api migrate"
   },
   "husky": {
     "hooks": {
