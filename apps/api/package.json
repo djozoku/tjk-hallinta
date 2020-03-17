@@ -1,0 +1,31 @@
+{
+  "name": "@tjk/api",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "private": true,
+  "dependencies": {
+    "apollo-server-express": "^2.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^14.6.0",
+    "pg": "^7.18.2",
+    "reflect-metadata": "^0.1.13",
+    "tsconfig-paths": "^3.9.0",
+    "type-graphql": "^0.17.6",
+    "typeorm": "^0.2.24"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.3",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^13.9.1",
+    "ts-node-dev": "^1.0.0-pre.44"
+  },
+  "scripts": {
+    "start": "node -r tsconfig-paths/register dist/index.js",
+    "build": "tsc",
+    "dev": "tsnd -r tsconfig-paths/register --respawn --no-notify --project ./tsconfig.json src/index.ts",
+    "lint": "eslint --ext js,ts,tsx ."
+  }
+}

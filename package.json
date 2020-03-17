@@ -1,0 +1,46 @@
+{
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/prompt-cli": "^8.3.5",
+    "@commitlint/travis-cli": "^8.3.5",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "start:api": "yarn workspace @tjk/api start",
+    "build:api": "yarn workspace @tjk/api build",
+    "build:web": "yarn workspace @tjk/web build",
+    "dev:api": "yarn workspace @tjk/api dev",
+    "dev:web": "yarn workspace @tjk/web start",
+    "ct": "commit",
+    "lint": "yarn workspaces run lint",
+    "lint:fix": "yarn workspaces run lint --fix",
+    "format": "prettier --write .",
+    "typecheck": "yarn workspace @tjk/api tsc --noEmit && yarn workspace @tjk/web tsc"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn typecheck && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint",
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
