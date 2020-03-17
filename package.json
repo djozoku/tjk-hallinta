@@ -4,8 +4,8 @@
     "apps/*"
   ],
   "engines": {
-    "node": ">=12.x",
-    "yarn": "1.x"
+    "node": ">=10.19.x",
+    "yarn": ">=1.17.x"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
