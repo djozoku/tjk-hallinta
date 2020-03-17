@@ -3,6 +3,10 @@
   "workspaces": [
     "apps/*"
   ],
+  "engines": {
+    "node": ">=12.x",
+    "yarn": "1.x"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
@@ -28,7 +32,8 @@
     "lint": "yarn workspaces run lint",
     "lint:fix": "yarn workspaces run lint --fix",
     "format": "prettier --write .",
-    "typecheck": "yarn workspace @tjk/api tsc --noEmit && yarn workspace @tjk/web tsc"
+    "typecheck": "yarn workspace @tjk/api tsc --noEmit && yarn workspace @tjk/web tsc",
+    "heroku-postbuild": "yarn build:api"
   },
   "husky": {
     "hooks": {
