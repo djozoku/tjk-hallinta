@@ -55,6 +55,7 @@ const bootstrap = async () => {
       };
     },
     playground: true,
+    introspection: true,
   });
 
   // apply Apollo Server instance to Express application
