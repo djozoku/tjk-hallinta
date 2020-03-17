@@ -7,6 +7,7 @@ const json = {
   name: 'default',
   type: 'postgres',
   url: process.env.DATABASE_URL,
+  ssl: !!parseInt(process.env.DATABASE_SSL || '1', 10),
   entities: ['dist/modules/**/*.Entity.*'],
   migrations: ['migrations/*.js'],
   cli: {
