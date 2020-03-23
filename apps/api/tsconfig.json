@@ -10,7 +10,11 @@
     "composite": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": ["node", "express", "graphql", "dotenv"]
+    "types": ["node", "express", "graphql", "dotenv"],
+    "paths": {
+      "@module/*": ["modules/*"],
+      "@utils/*": ["utils/*"]
+    }
   },
   "include": ["src"]
 }
