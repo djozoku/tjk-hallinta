@@ -12,6 +12,8 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'import'],
   rules: {
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off', // can be inferred implicitly
+    '@typescript-eslint/no-explicit-any': 'off', // we need to sometimes get off the type system
+    'import/no-unresolved': 'off', // typescript already knows what imports resolve
   },
 };
