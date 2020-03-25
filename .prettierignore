@@ -1,3 +1,6 @@
 node_modules
 dist
+build
 apps/api/migrations/*.js
+apps/web/src/react-app-env.d.ts
+apps/web/src/serviceWorker.ts
