@@ -7,8 +7,18 @@ import { createConnection } from 'typeorm';
 import { buildSchema, AuthChecker } from 'type-graphql';
 import { ApolloServer } from 'apollo-server-express';
 
-import SampleResolver from './modules/sample/Sample.Resolver';
-import { GraphQLContext } from './utils/GraphQLContext';
+import { GraphQLContext, DataLoaders } from '@utils/GraphQLContext';
+import OhjaajaLoader from '@module/ohjaaja/Ohjaaja.Loader';
+import OppilasLoader from '@module/oppilas/Oppilas.Loader';
+import TJKPaikkaLoader from '@module/tjkpaikka/TJKPaikka.Loader';
+import VastuuopettajaLoader from '@module/vastuuopettaja/Vastuuopettaja.Loader';
+import {
+  YhdistelyIDLoader,
+  YhdistelyOppilasLoader,
+  YhdistelyTJKPaikkaLoader,
+  YhdistelyVastuuopettajaLoader,
+} from '@module/yhdistely/Yndistely.Loaders';
+import RyhmaLoader from '@module/ryhma/Ryhma.Loader';
 
 // check if we are in development
 const isDev = process.env.NODE_ENV !== 'production';
@@ -43,15 +53,34 @@ const bootstrap = async () => {
   };
 
   // Setup TypeGraphQL Schema
-  const schema = await buildSchema({ resolvers: [SampleResolver], validate: false, authChecker });
+  const schema = await buildSchema({
+    resolvers: [`${__dirname}/modules/**/*.Resolver.*`],
+    validate: false,
+    authChecker,
+  });
 
   // Setup Apollo Server
   const server = new ApolloServer({
     schema,
     context: ({ req, res }): GraphQLContext => {
+      const YhdistelyLoader = YhdistelyIDLoader();
+      const loaders: DataLoaders = {
+        OhjaajaLoader: OhjaajaLoader(),
+        OppilasLoader: OppilasLoader(),
+        RyhmaLoader: RyhmaLoader(),
+        TJKPaikkaLoader: TJKPaikkaLoader(),
+        VastuuopettajaLoader: VastuuopettajaLoader(),
+        YhdistelyLoaders: {
+          IDLoader: YhdistelyLoader,
+          OppilasLoader: YhdistelyOppilasLoader(YhdistelyLoader),
+          TJKPaikkaLoader: YhdistelyTJKPaikkaLoader(YhdistelyLoader),
+          VastuuopettajaLoader: YhdistelyVastuuopettajaLoader(YhdistelyLoader),
+        },
+      };
       return {
         req,
         res,
+        loaders,
       };
     },
     playground: true,

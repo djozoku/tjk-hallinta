@@ -2,6 +2,8 @@
 
 TJK-paikkojen hallinta ohjelmisto
 
+Mindmap that includes the Database Table Structure and a Sitemap is available [here](https://whimsical.com/9A6EXPAhwpPPrJHCRbYosA).
+
 - [TJK Hallinta](#tjk-hallinta)
   - [Tooling](#tooling)
   - [Packages / Apps / Services](#packages--apps--services)
@@ -19,7 +21,7 @@ TJK-paikkojen hallinta ohjelmisto
 | Yarn        | Package Manager                                  |
 | ESLint      | Javascript Linter                                |
 | Prettier    | Code Formatter                                   |
-| Commitlint  | Commit style linter                              |
+| Commitlint  | Commit message linter                            |
 | Husky       | Git Hooks                                        |
 | lint-staged | Lint staged files                                |
 
@@ -40,6 +42,7 @@ Packages Used:
 | apollo-server-express | GraphQL middleware for Express                                           |
 | type-graphql          | Easy way to write GraphQL with Typescript                                |
 | typeorm               | Easy way to write database entities and manage connections in Typescript |
+| dataloader            | Easy way to load the same data only once per request                     |
 
 ### Web
 

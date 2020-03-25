@@ -6,11 +6,15 @@
     "module": "CommonJS",
     "outDir": "dist",
     "rootDir": "src",
-    "baseUrl": "src",
-    "composite": true,
+    "baseUrl": ".",
+    "declaration": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": ["node", "express", "graphql", "dotenv"]
+    "types": ["node", "express", "graphql", "dotenv"],
+    "paths": {
+      "@module/*": ["src/modules/*", "dist/modules/*"],
+      "@utils/*": ["src/utils/*", "dist/modules/*"]
+    }
   },
   "include": ["src"]
 }
