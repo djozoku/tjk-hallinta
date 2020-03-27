@@ -1,4 +1,5 @@
 import { Mutation, Resolver, Arg, ID, Query } from 'type-graphql';
+
 import Ryhma from './Ryhma.Entity';
 
 @Resolver()
