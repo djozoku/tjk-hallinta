@@ -14,7 +14,7 @@ export default class OppilasResolver {
   }
 
   @FieldResolver(() => Yhdistely)
-  async ohjaaja(
+  async yhdistely(
     @Ctx()
     {
       loaders: {
