@@ -1,7 +1,9 @@
 import { ObjectType, Field } from 'type-graphql';
 
+import { IOsoite } from './Osoite.Interface';
+
 @ObjectType()
-export default class Osoite {
+export default class Osoite implements IOsoite {
   @Field()
   katuosoite!: string;
 

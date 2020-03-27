@@ -1,9 +1,11 @@
 import { ObjectType, Field, ID } from 'type-graphql';
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
+import { IOppilas } from './Oppilas.Interface';
+
 @ObjectType()
 @Entity()
-export default class Oppilas extends BaseEntity {
+export default class Oppilas extends BaseEntity implements IOppilas {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
