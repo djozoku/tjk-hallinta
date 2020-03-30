@@ -4,3 +4,6 @@ export interface IOhjaaja {
   puhelin: string;
   sposti: string;
 }
+
+export type ILisaaOhjaaja = Omit<IOhjaaja, 'id'>;
+export type IMuokkaaOhjaaja = Partial<ILisaaOhjaaja>;
