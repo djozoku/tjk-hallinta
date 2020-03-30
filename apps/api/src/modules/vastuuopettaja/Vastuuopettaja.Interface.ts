@@ -4,3 +4,6 @@ export interface IVastuuopettaja {
   puhelin: string;
   sposti: string;
 }
+
+export type ILisaaVastuuopettaja = Omit<IVastuuopettaja, 'id'>;
+export type IMuokkaaVastuuopettaja = Partial<ILisaaVastuuopettaja>;
