@@ -11,7 +11,7 @@ export default class OhjaajaResolver {
     @Arg('ohjaaja', { description: 'Uuden ohjaajan tiedot' }) uusiOhjaaja: LisaaOhjaaja,
   ) {
     const ohjaaja = await Ohjaaja.findOne({ where: { nimi: uusiOhjaaja.nimi } });
-    if (ohjaaja) throw new Error(`Ohjaaja ${uusiOhjaaja.nimi} on jo olemassa`);
+    if (ohjaaja) throw new Error(`Ohjaaja ${uusiOhjaaja.nimi} on jo tietokannassa`);
 
     return Ohjaaja.create(uusiOhjaaja).save();
   }

@@ -14,18 +14,18 @@ export default class RyhmaResolver {
   @Mutation(() => Ryhma, { description: 'Lisää uuden ryhmän tietokantaan' })
   async lisaaRyhma(@Arg('ryhma', { description: 'Uuden ryhmän tiedot' }) uusiRyhma: LisaaRyhma) {
     const ryhma = await Ryhma.findOne({ where: { nimi: uusiRyhma.nimi } });
-    if (ryhma) throw new Error('Ryhmä tällä nimellä on jo olemassa');
+    if (ryhma) throw new Error(`Ryhmä ${uusiRyhma.nimi} on jo tietokannassa`);
 
-    return Ryhma.create({ nimi: uusiRyhma.nimi }).save();
+    return Ryhma.create(uusiRyhma).save();
   }
 
-  @Mutation(() => Ryhma, { description: 'Muokkaa olemassa olevan ryhmän nimeä' })
+  @Mutation(() => Ryhma, { description: 'Muokkaa olemassa olevan ryhmän tietoja' })
   async muokkaaRyhma(
     @Arg('id', () => ID, { description: 'Muokattavan ryhmän ID' }) id: string,
     @Arg('muokkaus', { description: 'Muokatut ryhmän tiedot' }) muokkaus: MuokkaaRyhma,
   ) {
     const ryhma = await Ryhma.findOne(id);
-    if (!ryhma) throw new Error(`Ryhmää ei löytynyt id:llä "${id}"`);
+    if (!ryhma) throw new Error(`Ryhmää ei löytynyt ID:llä "${id}"`);
 
     if (muokkaus.nimi) ryhma.nimi = muokkaus.nimi;
 
@@ -35,7 +35,7 @@ export default class RyhmaResolver {
   @Mutation(() => Boolean, { description: 'Poistaa olemassa olevan ryhmän' })
   async poistaRyhma(@Arg('id', () => ID, { description: 'Poistettavan ryhmän ID' }) id: string) {
     const ryhma = await Ryhma.findOne(id);
-    if (!ryhma) throw new Error(`Ryhmää ei löytynyt id:llä "${id}"`);
+    if (!ryhma) throw new Error(`Ryhmää ei löytynyt ID:llä "${id}"`);
 
     await ryhma.remove();
     return true;
