@@ -11,7 +11,7 @@ import MuokkaaVastuuopettaja from './MuokkaaVastuuopettaja.Input';
 export default class VastuuopettajaResolver {
   @Query(() => Vastuuopettaja)
   async haeVastuuopettaja(
-    @Arg('id', () => ID, { description: 'Haettavan vastuuopettajan id', nullable: true })
+    @Arg('id', () => ID, { description: 'Haettavan vastuuopettajan ID', nullable: true })
     id?: string,
     @Arg('nimi', () => String, { description: 'Haettavan vastuuopettajan nimi', nullable: true })
     nimi?: string,
