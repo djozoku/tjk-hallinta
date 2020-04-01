@@ -4,3 +4,5 @@ export interface IOsoite {
   postinumero: string;
   paikkakunta: string;
 }
+
+export type IMuokkaaOsoite = Partial<IOsoite>;
