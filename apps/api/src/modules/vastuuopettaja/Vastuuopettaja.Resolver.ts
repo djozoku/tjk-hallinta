@@ -9,7 +9,9 @@ import MuokkaaVastuuopettaja from './MuokkaaVastuuopettaja.Input';
 
 @Resolver(Vastuuopettaja)
 export default class VastuuopettajaResolver {
-  @Query(() => Vastuuopettaja)
+  @Query(() => Vastuuopettaja, {
+    description: 'Hakee yhden vastuuopettajan tiedot joko ID:n tai nimen perusteella',
+  })
   async haeVastuuopettaja(
     @Arg('id', () => ID, { description: 'Haettavan vastuuopettajan ID', nullable: true })
     id?: string,
