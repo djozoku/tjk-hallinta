@@ -1,11 +1,12 @@
 import { ObjectType, Field, ID } from 'type-graphql';
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
+import { ITJKPaikka } from './TJKPaikka.Interface';
 import Osoite from './Osoite.Type';
 
 @ObjectType()
 @Entity()
-export default class TJKPaikka extends BaseEntity {
+export default class TJKPaikka extends BaseEntity implements ITJKPaikka {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

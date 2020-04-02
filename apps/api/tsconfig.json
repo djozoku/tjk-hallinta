@@ -13,7 +13,7 @@
     "types": ["node", "express", "graphql", "dotenv"],
     "paths": {
       "@module/*": ["src/modules/*", "dist/modules/*"],
-      "@utils/*": ["src/utils/*", "dist/modules/*"]
+      "@utils/*": ["src/utils/*", "dist/utils/*"]
     }
   },
   "include": ["src"]
